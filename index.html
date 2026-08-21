@@ -490,90 +490,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 </div>
 
-            </div>
 
-        </section>
+                <div class="experiencia">
 
+                    <strong>
+                        +7
+                    </strong>
 
-        <!-- =========================
-             EXPERIÊNCIA
-        ========================= -->
-
-        <section class="experience">
-
-            <div class="container experience-content">
-
-                <div class="experience-number">
-                    +7
-                </div>
-
-                <h2>
-                    Anos de experiência
-                </h2>
-
-                <p>
-
-                    Experiência realizando fretes e pequenos
-                    transportes, com atendimento direto,
-                    veículo próprio e compromisso com o serviço.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ÁREAS DE ATENDIMENTO
-        ========================= -->
-
-        <section
-            class="areas"
-            id="areas-atendimento"
-        >
-
-            <div class="container">
-
-
-                <div class="section-title">
-
-                    <h2>
-                        Onde atendemos
-                    </h2>
+                    <span>
+                        Anos de experiência
+                    </span>
 
                     <p>
 
-                        Atendimento em Florianópolis
-                        e cidades da região.
+                        Experiência realizando fretes e pequenos transportes,
+                        com atendimento direto, veículo próprio e compromisso
+                        com o serviço.
 
                     </p>
 
                 </div>
 
 
-                <div class="area-list">
+                <div class="areas">
 
+                    <h3>
+                        Onde atendemos
+                    </h3>
 
-                    <div class="area">
-                        Florianópolis
+                    <p>
+                        Atendimento em Florianópolis e cidades da região.
+                    </p>
+
+                    <div class="areas-list">
+
+                        <span>
+                            Florianópolis
+                        </span>
+
+                        <span>
+                            São José
+                        </span>
+
+                        <span>
+                            Palhoça
+                        </span>
+
+                        <span>
+                            Biguaçu
+                        </span>
+
                     </div>
-
-
-                    <div class="area">
-                        São José
-                    </div>
-
-
-                    <div class="area">
-                        Palhoça
-                    </div>
-
-
-                    <div class="area">
-                        Biguaçu
-                    </div>
-
 
                 </div>
 
@@ -586,10 +553,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
              COMO TRABALHAMOS
         ========================= -->
 
-        <section
-            class="como-funciona"
-            id="como-funciona"
-        >
+        <section>
 
             <div class="container">
 
@@ -616,12 +580,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
 
-                <div class="etapas">
+                <div class="steps">
 
 
-                    <div class="etapa">
+                    <div class="step">
 
-                        <div class="numero">
+                        <div class="step-number">
                             01
                         </div>
 
@@ -631,17 +595,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <p>
 
-                            Informe os locais de retirada
-                            e entrega e conte o que precisa transportar.
+                            Informe os locais de retirada e entrega
+                            e conte o que precisa transportar.
 
                         </p>
 
                     </div>
 
 
-                    <div class="etapa">
+                    <div class="step">
 
-                        <div class="numero">
+                        <div class="step-number">
                             02
                         </div>
 
@@ -660,9 +624,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
 
 
-                    <div class="etapa">
+                    <div class="step">
 
-                        <div class="numero">
+                        <div class="step-number">
                             03
                         </div>
 
@@ -673,17 +637,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p>
 
                             Ajudamos no carregamento e utilizamos
-                            cordas, catracas e lonas para
-                            acomodar e proteger a carga.
+                            cordas, catracas e lonas para acomodar
+                            e proteger a carga.
 
                         </p>
 
                     </div>
 
 
-                    <div class="etapa">
+                    <div class="step">
 
-                        <div class="numero">
+                        <div class="step-number">
                             04
                         </div>
 
@@ -1043,11 +1007,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- =========================
          RASTREAMENTO DE CONVERSÃO
-         PREPARADO PARA GOOGLE ADS
-         E GOOGLE ANALYTICS
+         GOOGLE ADS - WHATSAPP
     ========================= -->
 
     <script>
+
+        function gtagSendEvent(url) {
+
+            var callback = function () {
+
+                if (typeof url === 'string') {
+                    window.open(url, '_blank');
+                }
+
+            };
+
+            gtag('event', 'whatsapp_click', {
+                'event_callback': callback,
+                'event_timeout': 2000
+            });
+
+            return false;
+        }
+
 
         document.addEventListener(
             "DOMContentLoaded",
@@ -1062,46 +1044,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                             link.addEventListener(
                                 "click",
-                                function () {
+                                function (event) {
 
-                                    var eventData = {
+                                    event.preventDefault();
 
-                                        event: "whatsapp_click",
-
-                                        conversion_type: "lead",
-
-                                        page_location:
-                                            window.location.href
-
-                                    };
-
-
-                                    window.dataLayer =
-                                        window.dataLayer || [];
-
-
-                                    window.dataLayer.push(
-                                        eventData
+                                    gtagSendEvent(
+                                        link.href
                                     );
-
-
-                                    if (
-                                        typeof window.gtag ===
-                                        "function"
-                                    ) {
-
-                                        window.gtag(
-                                            "event",
-                                            "generate_lead",
-                                            {
-                                                method: "WhatsApp",
-
-                                                page_location:
-                                                    window.location.href
-                                            }
-                                        );
-
-                                    }
 
                                 }
                             );
